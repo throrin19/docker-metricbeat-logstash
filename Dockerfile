@@ -4,4 +4,7 @@ ENV LOGSTASH_ENABLED=true
 ENV ELASTICSEARCH_ENABLED=false
 ENV LOGSTASH_URL=localhost
 
-ADD metricbeat.yml /metricbeat.yml
+COPY metricbeat.yml /usr/share/metricbeat/metricbeat.yml
+USER root
+RUN chown metricbeat /usr/share/metricbeat/metricbeat.yml
+USER metricbeat
